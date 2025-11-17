@@ -36,9 +36,9 @@ except Exception as e:
 
 # Extract features
 print("Extracting features...")
-feature_cols = ['Text','Bit', 'Phishing_Type', 'Severity', 'Confidence']
+feature_cols = ['Bit', 'Phishing_Type', 'Severity', 'Confidence']
 tfidf = TfidfVectorizer(max_features=10000)
-
+X_text = tfidf.fit_transform(df['Text'].astype(str)).toarray()
 X = df[feature_cols].fillna(0).astype(float).values
 df['Serverity'] = df['Severity'].map({'Low': 0, 'Medium': 1, 'High': 2}).fillna(0)
 df['Phishing_Type'] = df['Phishing_Type'].map({'Legitimate': 0, 'Phishing': 1}).fillna(0)
