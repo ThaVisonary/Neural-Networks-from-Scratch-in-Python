@@ -1,51 +1,39 @@
-# 🎯 PHISHING DETECTION: Quick Start
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-## Your Dataset
-- **Files:** CSV file
-- **Features:** 4 numeric (Detected, Malicious, Suspicious, Malware)
-- **Task:** Binary classification (legitimate vs phishing)
+print("\n" + "=" * 80)      # Print header
+print("PHISHING DETECTION NEURAL NETWORK TRAINING")     # Print title
+print("=" * 80 + "\n")      # Print configuration and load data
 
----
 
-## 🚀 Run Training NOW
+# Configuration
+csv_file = 'Data/phishing_legit_dataset_KD_10000_utf8.csv'
+batch_size = 16
+iterations = 100
 
-```bash
-python 'encode_phishing_dataset'
-python 'PhishingTSample'
-```
+print("Configuration:")
+print("   CSV File: " + csv_file)
+print("   Batch Size: " + str(batch_size))
+print("   Iterations: " + str(iterations) + "\n")
 
-That's it! The script will:
-1. ✅ Load your dataset
-2. ✅ Normalize features
-3. ✅ Split into 80% train, 20% test
-4. ✅ Train neural network (100 iterations)
-5. ✅ Evaluate accuracy
-6. ✅ Show loss curves
-7. ✅ Save model (optional)
+# Load data
+print("Loading dataset...")
+try:
+    df = pd.read_csv(csv_file, encoding='utf-8')
+    print("[OK] Loaded " + str(len(df)) + " samples\n")
+except Exception as e:
+    print("[ERROR] " + str(e) + "\n")
+    exit(1)
 
----
+# Extract features
+print("Extracting features...")
+features = ['Phishing_Type', 'Severity', 'Confidence']
+X = df[features].fillna(0).astype(float).values
+df['Serverity'] = df['Severity'].map({'Low': 0, 'Medium': 1, 'High': 2}).fillna(0)
+df['Phishing_Type'] = df['Phishing_Type'].map({'Legitimate': 0, 'Phishing': 1}).fillna(0)
+df['Confidence'] = df['Confidence'].fillna(0).astype(float)
+print("[OK] Features shape: " + str(X.shape) + "\n")
 
-## 📊 What You'll See
-
-```
-Training progress → Shows which iteration it's on
-Loss decreasing → Model is learning
-Final Accuracy → % of correct predictions
-Plots → Visual results
-```
-
-Expected output example:
-```
-✅ Test Accuracy: 85.32%
-   Correct: 181/212
-
-Class 0 (Legitimate): 92.5%
-Class 1 (Phishing):   78.3%
-```
-
----
-
-Steps:
-1. Upload dataset into Data folder
-2. Encode the dataset in encode_phishing_dataset.py
-3. Run the dataset in PhishingTSample 
