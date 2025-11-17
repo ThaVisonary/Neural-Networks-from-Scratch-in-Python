@@ -15,8 +15,8 @@ print("PHISHING DATASET ENCODING CONVERTER")
 print("=" * 80 + "\n")
 
 # Input and output paths
-input_file = 'Data/url_dataset.csv'
-output_file = 'Data/url_dataset_utf8.csv'
+input_file = 'Data/phishing_legit_dataset_KD_10000.csv'
+output_file = 'Data/phishing_legit_dataset_KD_10000_utf8.csv'
 
 print("Input file:  " + input_file)
 print("Output file: " + output_file + "\n")
