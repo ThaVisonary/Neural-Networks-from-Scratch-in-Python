@@ -31,8 +31,7 @@ except Exception as e:
 # Extract features
 print("Extracting features...")
 features = ['text','label', 'phishing_type', 'severity', 'confidence']
-
 y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values
-
-print("[OK] Features shape: " + str(y.shape) + "\n")
+print("Dataset size: " + str(y.shape) + "\n")
 print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 0).sum()/len(y), 1)}%), Phishing (1): {(y == 1).sum()} ({round(100*(y == 1).sum()/len(y), 1)}%)\n")
+
