@@ -15,8 +15,8 @@ print("PHISHING DATASET ENCODING CONVERTER")
 print("=" * 80 + "\n")
 
 # Input and output paths
-input_file = 'Data/testphish.csv'
-output_file = 'Data/testphish_utf8.csv'
+input_file = 'Data/url_dataset.csv'
+output_file = 'Data/url_dataset_utf8.csv'
 
 print("Input file:  " + input_file)
 print("Output file: " + output_file + "\n")
@@ -77,7 +77,7 @@ for i, col in enumerate(df.columns, 1):
 print("\n" + "=" * 80)
 print("Next Steps:")
 print("=" * 80)
-print("\n1. Update train_phishing_simple.py to use:")
-print("   csv_file = 'Data/testphish_utf8.csv'")
+print("\n1. Update PhishingTSample.py to use:")
+print("   csv_file = 'Data/url_dataset_utf8.csv'")
 print("\n2. Or use encoding='utf-8' in the script (default)")
-print("\n3. Then run: python train_phishing_simple.py\n")
+print("\n3. Then run: python PhishingTSample.py\n")
