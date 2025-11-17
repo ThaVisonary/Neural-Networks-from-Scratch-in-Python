@@ -342,3 +342,87 @@ class MNISTData:
         img = img[:num, :]
         one_hot = one_hot[:num, :]
         return img, one_hot
+
+
+class CSVData:
+    """
+    Load data from a CSV file.
+    
+    CSV Format: The last column should be the label, all other columns are features.
+    Example:
+        feature1,feature2,feature3,...,label
+        0.5,0.2,0.8,...,0
+        0.3,0.6,0.1,...,1
+    """
+    def __init__(self, batch_size, csv_path, train_split=0.8, normalize=True):
+        """
+        Args:
+            batch_size: Training batch size
+            csv_path: Path to CSV file
+            train_split: Fraction of data to use for training (default: 0.8)
+            normalize: Whether to normalize data to [0, 1] range
+        """
+        self.batch_size = batch_size
+        
+        # Load CSV data
+        try:
+            import pandas as pd
+        except ImportError:
+            raise ImportError("pandas is required for CSVData. Install with: pip install pandas")
+        
+        df = pd.read_csv('testphish.csv')
+        
+        
+
+        # Separate features (all columns except last) and labels (last column)
+        X = df.iloc[:, :-1].values.astype(np.float32)
+        y = df.iloc[:, -1].values
+        
+        # One-hot encode labels
+        num_classes = len(np.unique(y))
+        y_one_hot = np.zeros((len(y), num_classes))
+        for idx, label in enumerate(y):
+            y_one_hot[idx, int(label)] = 1
+        
+        # Normalize if requested
+        if normalize:
+            max_val = np.abs(X).max()
+            if max_val > 0:
+                X = X / max_val
+        
+        # Train/test split
+        self.split = int(len(X) * train_split)
+        
+        # Shuffle data
+        indices = np.arange(len(X))
+        np.random.shuffle(indices)
+        X = X[indices]
+        y_one_hot = y_one_hot[indices]
+        
+        # Split into train and test
+        self._input_tensor_train = X[:self.split]
+        self._label_tensor_train = y_one_hot[:self.split]
+        self._input_tensor_test = X[self.split:]
+        self._label_tensor_test = y_one_hot[self.split:]
+        
+        self._current_forward_idx_iterator = self._forward_idx_iterator()
+    
+    def _forward_idx_iterator(self):
+        """Generate batches of random indices for training."""
+        num_iterations = int(np.ceil(self.split / self.batch_size))
+        idx = np.arange(self.split)
+        while True:
+            this_idx = np.random.choice(idx, self.split, replace=False)
+            for i in range(num_iterations):
+                batch_idx = this_idx[i * self.batch_size:(i + 1) * self.batch_size]
+                if len(batch_idx) > 0:
+                    yield batch_idx
+    
+    def next(self):
+        """Return next batch for training."""
+        idx = next(self._current_forward_idx_iterator)
+        return self._input_tensor_train[idx, :], self._label_tensor_train[idx, :]
+    
+    def get_test_set(self):
+        """Return full test set."""
+        return self._input_tensor_test, self._label_tensor_test
