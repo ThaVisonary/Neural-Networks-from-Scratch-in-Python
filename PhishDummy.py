@@ -30,12 +30,8 @@ except Exception as e:
 
 # Extract features
 print("Extracting features...")
-features = ['Phishing_Type', 'Severity', 'Confidence']
+features = ['text','label', 'phishing_type', 'severity', 'confidence']
 
-df['Serverity'] = df['Severity'].map({'Low': 0, 'Medium': 1, 'High': 2}).fillna(0)
-df['Phishing_Type'] = df['Phishing_Type'].map({'Legitimate': 0, 'Phishing': 1}).fillna(0)
-df['Confidence'] = df['Confidence'].fillna(0).astype(float)
+y= ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values
 
-y = df['Serverity'].values
-
-print( "[OK] Labels shape: " + str(y.shape) + "\n")
+print("[OK] Features shape: " + str(y.shape) + "\n")
