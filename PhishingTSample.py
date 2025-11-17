@@ -42,7 +42,7 @@ except Exception as e:
 
 # Create labels
 print("Creating labels...")
-y_raw = df['Phishing'].fillna(0) if 'Phishing' in df.columns else df['Malicious'].fillna(0)
+y_raw = df['Phishing'].fillna(0) if 'Phishing' in df.columns else df['Phishing'].fillna(0)
 y = (y_raw > 0).astype(int).values
 
 class_0_count = (y == 0).sum()
