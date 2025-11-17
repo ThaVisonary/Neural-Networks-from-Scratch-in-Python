@@ -16,7 +16,7 @@ print("=" * 80 + "\n")      # Print configuration and load data
 
 
 # Configuration
-csv_file = 'Data/phishing_legit_phishing_dataset_KD_10000_utf8.csv'
+csv_file = 'Data/phishing_legit_dataset_KD_10000_utf8.csv'
 batch_size = 16
 iterations = 100
 
