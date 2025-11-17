@@ -1,8 +1,7 @@
 # 🎯 PHISHING DETECTION: Quick Start
 
 ## Your Dataset
-- **File:** `data/phishing_clean.csv`
-- **Samples:** 1,062 phishing/spam messages
+- **Files:** CSV file
 - **Features:** 4 numeric (Detected, Malicious, Suspicious, Malware)
 - **Task:** Binary classification (legitimate vs phishing)
 
@@ -11,7 +10,8 @@
 ## 🚀 Run Training NOW
 
 ```bash
-python train_phishing.py
+python 'encode_phishing_dataset'
+python 'PhishingTSample'
 ```
 
 That's it! The script will:
@@ -45,36 +45,7 @@ Class 1 (Phishing):   78.3%
 
 ---
 
-## 💡 Customize Training (Optional)
-
-Edit `train_phishing.py` to change:
-
-```python
-batch_size = 16        # Change to 8, 32, or 64
-iterations = 100       # Change to 200, 300, etc.
-```
-
-More iterations = Better accuracy (but takes longer)
-
----
-
-## 📁 Files
-
-- `train_phishing.py` → Main training script
-- `data/phishing_clean.csv` → Your dataset
-- `trained/phishing_model` → Saved model (after training)
-- `PHISHING_GUIDE.md` → Detailed guide
-
----
-
-## ✨ Features
-
-Your neural network will learn to detect:
-- Messages from unknown senders
-- Suspicious URLs
-- Multiple threat indicators
-- Patterns in phishing messages
-
----
-
-**Run now: `python train_phishing.py`** 🚀
+Steps:
+1. Upload dataset into Data folder
+2. Encode the dataset in encode_phishing_dataset.py
+3. Run the dataset in PhishingTSample 

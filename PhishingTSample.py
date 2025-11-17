@@ -34,11 +34,11 @@ except Exception as e:
     print("[ERROR] " + str(e) + "\n")
     exit(1)
 
-# Extract features
-print("Extracting features...")
-feature_cols = ['Detected', 'Malicious', 'Suspicious', 'Malware']
-X = df[feature_cols].fillna(0).astype(float).values
-print("[OK] Features shape: " + str(X.shape) + "\n")
+# # Extract features
+# print("Extracting features...")
+# feature_cols = ['Detected', 'Malicious', 'Suspicious', 'Malware']
+# X = df[feature_cols].fillna(0).astype(float).values
+# print("[OK] Features shape: " + str(X.shape) + "\n")
 
 # Create labels
 print("Creating labels...")
