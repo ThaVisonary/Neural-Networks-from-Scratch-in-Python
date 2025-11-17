@@ -1,0 +1,80 @@
+# 🎯 PHISHING DETECTION: Quick Start
+
+## Your Dataset
+- **File:** `data/phishing_clean.csv`
+- **Samples:** 1,062 phishing/spam messages
+- **Features:** 4 numeric (Detected, Malicious, Suspicious, Malware)
+- **Task:** Binary classification (legitimate vs phishing)
+
+---
+
+## 🚀 Run Training NOW
+
+```bash
+python train_phishing.py
+```
+
+That's it! The script will:
+1. ✅ Load your dataset
+2. ✅ Normalize features
+3. ✅ Split into 80% train, 20% test
+4. ✅ Train neural network (100 iterations)
+5. ✅ Evaluate accuracy
+6. ✅ Show loss curves
+7. ✅ Save model (optional)
+
+---
+
+## 📊 What You'll See
+
+```
+Training progress → Shows which iteration it's on
+Loss decreasing → Model is learning
+Final Accuracy → % of correct predictions
+Plots → Visual results
+```
+
+Expected output example:
+```
+✅ Test Accuracy: 85.32%
+   Correct: 181/212
+
+Class 0 (Legitimate): 92.5%
+Class 1 (Phishing):   78.3%
+```
+
+---
+
+## 💡 Customize Training (Optional)
+
+Edit `train_phishing.py` to change:
+
+```python
+batch_size = 16        # Change to 8, 32, or 64
+iterations = 100       # Change to 200, 300, etc.
+```
+
+More iterations = Better accuracy (but takes longer)
+
+---
+
+## 📁 Files
+
+- `train_phishing.py` → Main training script
+- `data/phishing_clean.csv` → Your dataset
+- `trained/phishing_model` → Saved model (after training)
+- `PHISHING_GUIDE.md` → Detailed guide
+
+---
+
+## ✨ Features
+
+Your neural network will learn to detect:
+- Messages from unknown senders
+- Suspicious URLs
+- Multiple threat indicators
+- Patterns in phishing messages
+
+---
+
+**Run now: `python train_phishing.py`** 🚀
