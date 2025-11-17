@@ -28,7 +28,7 @@ print("   Iterations: " + str(iterations) + "\n")
 # Load data
 print("Loading dataset...")
 try:
-    df = pd.read_csv(csv_file, encoding='latin-1')
+    df = pd.read_csv('testphish.csv')
     print("[OK] Loaded " + str(len(df)) + " samples\n")
 except Exception as e:
     print("[ERROR] " + str(e) + "\n")
