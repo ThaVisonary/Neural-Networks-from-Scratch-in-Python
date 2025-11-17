@@ -35,4 +35,4 @@ features = ['text','label', 'phishing_type', 'severity', 'confidence']
 y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values
 
 print("[OK] Features shape: " + str(y.shape) + "\n")
-print("Class: 0 = Legitimate, 1 = Phishing", np.bincount(y) + "\n")
+print("Class: 0 = Legitimate, 1 = Phishing", np.bincount(y.shape) + "\n")
