@@ -16,7 +16,7 @@ print("=" * 80 + "\n")      # Print configuration and load data
 
 
 # Configuration
-csv_file = 'Data/testphish.csv'
+csv_file = 'Data/url_dataset_utf8.csv'
 batch_size = 16
 iterations = 100
 
@@ -28,7 +28,7 @@ print("   Iterations: " + str(iterations) + "\n")
 # Load data
 print("Loading dataset...")
 try:
-    df = pd.read_csv('testphish.csv')
+    df = pd.read_csv(csv_file, encoding='utf-8')
     print("[OK] Loaded " + str(len(df)) + " samples\n")
 except Exception as e:
     print("[ERROR] " + str(e) + "\n")
