@@ -31,9 +31,11 @@ except Exception as e:
 # Extract features
 print("Extracting features...")
 features = ['Phishing_Type', 'Severity', 'Confidence']
-X = df[features].fillna(0).astype(int)
+
 df['Serverity'] = df['Severity'].map({'Low': 0, 'Medium': 1, 'High': 2}).fillna(0)
 df['Phishing_Type'] = df['Phishing_Type'].map({'Legitimate': 0, 'Phishing': 1}).fillna(0)
 df['Confidence'] = df['Confidence'].fillna(0).astype(float)
+
+X = df[features].fillna(0).astype(int).values
 print("[OK] Features shape: " + str(X.shape) + "\n")
 
