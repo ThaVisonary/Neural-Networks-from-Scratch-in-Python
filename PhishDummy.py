@@ -49,7 +49,7 @@ print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 
 print("Sample data:")
 
 data = {}
-for feature, path in csv_file:
+for feature, path in df[features].items():
     df = pd.read_csv(path)
     data[feature] = df
     print(f"{feature} Dataset:")
