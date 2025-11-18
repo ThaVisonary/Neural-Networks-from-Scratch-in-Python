@@ -53,7 +53,7 @@ for feature, path in df.items():
     #df = pd.read_csv(path)
     data[feature] = df
     print(f"{feature} Dataset:")
-    print(f"shape: {df.shape}")
+    print(f"shape: {df[y].shape}")
     print(f"columns: {df.columns.tolist()}")
     #print(df[df['label'] == 1].head(10))
 
