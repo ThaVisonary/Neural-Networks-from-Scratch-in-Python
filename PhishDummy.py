@@ -2,7 +2,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import SVC
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+from collections import Counter
+
+
 
 print("\n" + "=" * 80)      # Print header
 print("PHISHING DETECTION NEURAL NETWORK TRAINING")     # Print title
