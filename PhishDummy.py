@@ -44,7 +44,7 @@ y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).value
 
 # Add the severity to y if it exists in the dataset
 if 'severity' in df.columns:
-    df['severity'] = df['severity'].map({'Low': 0, 'Medium': 1, 'High': 2}).fillna(0).astype(int)
+    df['severity'] = df['severity'].map({'low': 0, 'medium': 1, 'high': 2}).fillna(0).astype(int)
 
 print(f" Legitimate Emails (0): {(y == 0).sum()} ({round(100*(y == 0).sum()/len(y), 1)}%), Phishing Emails (1): {(y == 1).sum()} ({round(100*(y == 1).sum()/len(y), 1)}%)\n")
 
@@ -54,5 +54,5 @@ for i in range(5):
     print(f" Sample {i+1}:")
     print(f"  Text: {df['text'].iloc[i][:100]}...")  # Print first 100 characters of the text
     print(f"  Label: {y[i]}\n")
-    print(f"  Severity: {df['severity']}\n")
+    print(f"  Severity: {df['severity'].iloc[i]}\n")
 
