@@ -42,8 +42,6 @@ print("Sample data:")
 data = {}
 for feature in features:
     data[feature] = df[feature].fillna('').astype(str).values
-sample_df = pd.DataFrame(data)
-print(sample_df[features].head(5).to_string(index=False) + "\n")
 
-
+print(df[features].head(5).to_string(index=False) + "\n")
 
