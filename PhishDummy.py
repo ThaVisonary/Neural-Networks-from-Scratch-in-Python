@@ -49,14 +49,14 @@ print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 
 print("Sample data:")
 
 data = {}
-# for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
-#     df = pd.read_csv(csv_file)
+for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
+    df = pd.read_csv(csv_file)
 
-#     print(f"{feature} Dataset:")
-#     print(f"{feature} shape: {df.shape}")
-#     print(f"{feature} columns: {df.columns.tolist()}")
-
-print("Sample phishing data:")
-print(df[df['phishing_type'] == 'Phishing'].head(5))
-print("\nSample legitimate data:")
-print(df[df['phishing_type'] == 'Legitimate'].head(5))
+    print(f"{feature} Dataset:")
+    print(f"{feature} shape: {df.shape}")
+    print(f"{feature} columns: {df.columns.tolist()}")
+    print(f"Sample {feature} data:")
+# print("Sample phishing data:")
+# print(df[df['phishing_type'] == 'Phishing'].head(5))
+# print("\nSample legitimate data:")
+# print(df[df['phishing_type'] == 'Legitimate'].head(5))
