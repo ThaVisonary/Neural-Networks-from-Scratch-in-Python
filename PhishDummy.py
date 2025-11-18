@@ -41,8 +41,8 @@ except Exception as e:
 print("Extracting features...")
 features = ['text','label', 'phishing_type', 'severity', 'confidence']          # Define Features
 y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values       #Label Creation
-if y == 1:
-    y.append('serverity')
+if y.any() == True:
+    y.append('severity')
 else:
     pass
 print("Dataset size: " + str(len(y)))
