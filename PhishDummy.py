@@ -50,7 +50,7 @@ print("Sample data:")
 
 data = {}
 for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
-    df = pd.read(os.path)
+    df = pd.read_csv(csv_file, encoding='utf-8')
 
     print(f"{feature} Dataset:")
     print(f"{feature} shape: {df.shape}")
