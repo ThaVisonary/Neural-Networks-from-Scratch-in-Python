@@ -51,15 +51,11 @@ print("Sample data:")
 data = {}
 for feature in features:
     df = pd.read_csv(csv_file)
+    data[feature] = df
+    print(f"{feature} Dataset:")
+    print(f"{feature} shape: {df.shape}")
+    print(f"{feature} columns: {df.columns.tolist()}")
+    #print(df[df['label'] == 1].head(10))
 
-    # print(f"{feature} Dataset:")
-    # print(f"{feature} shape: {df.shape}")
-    # print(f"{feature} columns: {df.columns.tolist()}")
-    print(df[df['label'] == 1].head(10))
 
 
-
-# print("Sample phishing data:")
-# print(df[df['phishing_type'] == 'Phishing'].head(5))
-# print("\nSample legitimate data:")
-# print(df[df['phishing_type'] == 'Legitimate'].head(5))
