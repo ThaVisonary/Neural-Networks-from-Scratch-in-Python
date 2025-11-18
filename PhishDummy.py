@@ -53,8 +53,8 @@ for feature in features:
     df = pd.read_csv(csv_file)
     data[feature] = df
     print(f"{feature} Dataset:")
-    print(f"{feature} shape: {df.shape}")
-    print(f"{feature} columns: {df.columns.tolist()}")
+    print(f"{df} shape: {df.shape}")
+    print(f"{df} columns: {df.columns.tolist()}")
     #print(df[df['label'] == 1].head(10))
 
 
