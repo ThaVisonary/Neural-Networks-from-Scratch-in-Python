@@ -54,5 +54,5 @@ for i in range(5):
     print(f" Sample {i+1}:")
     print(f"  Text: {df['text'].iloc[i][:100]}...")  # Print first 100 characters of the text
     print(f"  Label: {y[i]}\n")
-    print(f"  Severity: {df['severity'].iloc[i]}\n")
+    print(f"  Severity: {df['severity']}\n")
 
