@@ -41,11 +41,11 @@ except Exception as e:
 print("Extracting features...")
 features = ['text','label', 'phishing_type', 'severity', 'confidence']          # Define Features
 y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values       #Label Creation
-if y.any() == True:
-    y.append('severity')
-else:
-    pass
-print("Dataset size: " + str(len(y)))
+
+# Add the severity to y if it exists in the dataset
+if 'severity' in df.columns:
+    df['severity'] = df['severity'].map({'Low': 0, 'Medium': 1, 'High': 2}).fillna(0).astype(int)
+    y = np.where(df['severity'] > 0, 1, y)  # Update labels based on severity
 print(f" Legitimate Emails (0): {(y == 0).sum()} ({round(100*(y == 0).sum()/len(y), 1)}%), Phishing Emails (1): {(y == 1).sum()} ({round(100*(y == 1).sum()/len(y), 1)}%)\n")
 
 # Table of Data Samples and their corresponding labels
@@ -54,3 +54,5 @@ for i in range(5):
     print(f" Sample {i+1}:")
     print(f"  Text: {df['text'].iloc[i][:100]}...")  # Print first 100 characters of the text
     print(f"  Label: {y[i]}\n")
+    print(f" 'Severity': {df['severity'].iloc[i]}\n")
+    
