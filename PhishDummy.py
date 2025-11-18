@@ -49,7 +49,7 @@ print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 
 print("Sample data:")
 
 data = {}
-for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
+for feature in features:
     df = pd.read_csv(csv_file)
 
     # print(f"{feature} Dataset:")
