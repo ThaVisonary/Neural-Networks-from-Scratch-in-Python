@@ -41,7 +41,6 @@ except Exception as e:
 print("Extracting features...")
 features = ['text','label', 'phishing_type', 'severity', 'confidence']
 y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values
-print("Dataset size: " + str(len(y)) + "\n")
-print(f"")
-print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 0).sum()/len(y), 1)}%), Phishing (1): {(y == 1).sum()} ({round(100*(y == 1).sum()/len(y), 1)}%)\n")
+print("Dataset size: " + str(len(y)))
+print(f" Legitimate Emails (0): {(y == 0).sum()} ({round(100*(y == 0).sum()/len(y), 1)}%), Phishing Emails (1): {(y == 1).sum()} ({round(100*(y == 1).sum()/len(y), 1)}%)\n")
 
