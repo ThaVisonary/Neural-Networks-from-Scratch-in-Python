@@ -49,12 +49,12 @@ print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 
 print("Sample data:")
 
 data = {}
-for feature in features:
-    df = pd.read_csv(csv_file)
+for feature, path in csv_file.items():
+    df = pd.read_csv(path)
     data[feature] = df
     print(f"{feature} Dataset:")
-    print(f"{df} shape: {df.shape}")
-    print(f"{df} columns: {df.columns.tolist()}")
+    print(f"shape: {df.shape}")
+    print(f"columns: {df.columns.tolist()}")
     #print(df[df['label'] == 1].head(10))
 
 
