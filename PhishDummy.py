@@ -50,7 +50,7 @@ print("Sample data:")
 
 data = {}
 for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
-    df = pd.read_csv('Data/phishing_legit_dataset_KD_10000_utf8.csv')
+    df = pd.read_csv(features[0], encoding='utf-8')
 
     print(f"{feature} Dataset:")
     print(f"{feature} shape: {df.shape}")
