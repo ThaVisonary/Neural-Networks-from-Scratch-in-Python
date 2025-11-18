@@ -38,4 +38,12 @@ print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 
 
 # Show Sample data
 print("Sample data:")
-print(df[features].head(5).to_string(index=False) + "\n")
+
+data = {}
+for feature in features:
+    data[feature] = df[feature].fillna('').astype(str).values
+sample_df = pd.DataFrame(data)
+print(sample_df[features].head(5).to_string(index=False) + "\n")
+
+
+
