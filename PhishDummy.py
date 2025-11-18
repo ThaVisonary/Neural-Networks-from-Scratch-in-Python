@@ -55,7 +55,7 @@ for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
     # print(f"{feature} Dataset:")
     # print(f"{feature} shape: {df.shape}")
     # print(f"{feature} columns: {df.columns.tolist()}")
-    print(df[df['phishing_type'] == 'Phishing'].head(5))
+    print(df[df['label'] == 1].head(10))
 
 
 
