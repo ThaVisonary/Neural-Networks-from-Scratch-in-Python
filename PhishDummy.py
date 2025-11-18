@@ -39,8 +39,18 @@ except Exception as e:
 
 # Extract features
 print("Extracting features...")
-features = ['text','label', 'phishing_type', 'severity', 'confidence']
-y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values
+features = ['text','label', 'phishing_type', 'severity', 'confidence']          # Define Features
+y = ((df['phishing_type'] == 'Phishing') | (df['label'] == 1)).astype(int).values       #Label Creation
+if y == 1:
+    y.append('serverity')
+else:
+    pass
 print("Dataset size: " + str(len(y)))
 print(f" Legitimate Emails (0): {(y == 0).sum()} ({round(100*(y == 0).sum()/len(y), 1)}%), Phishing Emails (1): {(y == 1).sum()} ({round(100*(y == 1).sum()/len(y), 1)}%)\n")
 
+# Table of Data Samples and their corresponding labels
+print("Sample Data:")
+for i in range(5):
+    print(f" Sample {i+1}:")
+    print(f"  Text: {df['text'].iloc[i][:100]}...")  # Print first 100 characters of the text
+    print(f"  Label: {y[i]}\n")
