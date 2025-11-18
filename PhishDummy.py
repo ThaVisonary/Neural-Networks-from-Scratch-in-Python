@@ -40,8 +40,13 @@ print(f" Class distribution: Legitimate (0): {(y == 0).sum()} ({round(100*(y == 
 print("Sample data:")
 
 data = {}
-for feature in features:
-    data[feature] = df[feature].fillna('').astype(str).values
+for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
+    df = pd.read(os.path)
 
-print(df[features].head(5).to_string(index=False) + "\n")
+    print(f"{feature} Dataset:")
+    print(f"{feature} shape: {df.shape}")
+    print(f"{feature} columns: {df.columns.tolist()}")
+
+
+
 
