@@ -50,12 +50,13 @@ print("Sample data:")
 
 data = {}
 for feature in csv_file.split('/')[-1].split('.')[0].split('_'):
-    df = pd.read_csv(features[0], encoding='utf-8')
+    # df = pd.read_csv()
 
     print(f"{feature} Dataset:")
     print(f"{feature} shape: {df.shape}")
     print(f"{feature} columns: {df.columns.tolist()}")
 
-
-
-
+print("Sample phishing data:")
+print(df[df['phishing_type'] == 'Phishing'].head(5))
+print("\nSample legitimate data:")
+print(df[df['phishing_type'] == 'Legitimate'].head(5))
